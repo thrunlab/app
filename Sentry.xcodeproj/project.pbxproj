@@ -14,6 +14,9 @@
 		4C1F4A361C686D0F00A1512C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C1F4A341C686D0F00A1512C /* LaunchScreen.storyboard */; };
 		4C1F4A411C686D0F00A1512C /* SentryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1F4A401C686D0F00A1512C /* SentryTests.swift */; };
 		4C1F4A4C1C686D1000A1512C /* SentryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1F4A4B1C686D1000A1512C /* SentryUITests.swift */; };
+		4C1F4A631C686E0D00A1512C /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C1F4A601C686DC800A1512C /* ResearchKit.framework */; };
+		4C1F4A641C686E0D00A1512C /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C1F4A601C686DC800A1512C /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4C1F4A691C68716B00A1512C /* ImageCaptureTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1F4A681C68716B00A1512C /* ImageCaptureTask.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +34,42 @@
 			remoteGlobalIDString = 4C1F4A271C686D0F00A1512C;
 			remoteInfo = Sentry;
 		};
+		4C1F4A5F1C686DC800A1512C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C1F4A591C686DC800A1512C /* ResearchKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B183A5951A8535D100C76870;
+			remoteInfo = ResearchKit;
+		};
+		4C1F4A611C686DC800A1512C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C1F4A591C686DC800A1512C /* ResearchKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 86CC8E9A1AC09332001CCD89;
+			remoteInfo = ResearchKitTests;
+		};
+		4C1F4A651C686E0D00A1512C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C1F4A591C686DC800A1512C /* ResearchKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B183A4731A8535D100C76870;
+			remoteInfo = ResearchKit;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4C1F4A671C686E0D00A1512C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4C1F4A641C686E0D00A1512C /* ResearchKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		4C1F4A281C686D0F00A1512C /* Sentry.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sentry.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +85,8 @@
 		4C1F4A471C686D1000A1512C /* SentryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SentryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C1F4A4B1C686D1000A1512C /* SentryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SentryUITests.swift; sourceTree = "<group>"; };
 		4C1F4A4D1C686D1000A1512C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C1F4A591C686DC800A1512C /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = "../../../projects-workspace/ResearchKit-master/ResearchKit.xcodeproj"; sourceTree = "<group>"; };
+		4C1F4A681C68716B00A1512C /* ImageCaptureTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCaptureTask.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C1F4A631C686E0D00A1512C /* ResearchKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +118,7 @@
 		4C1F4A1F1C686D0F00A1512C = {
 			isa = PBXGroup;
 			children = (
+				4C1F4A591C686DC800A1512C /* ResearchKit.xcodeproj */,
 				4C1F4A2A1C686D0F00A1512C /* Sentry */,
 				4C1F4A3F1C686D0F00A1512C /* SentryTests */,
 				4C1F4A4A1C686D1000A1512C /* SentryUITests */,
@@ -103,6 +145,7 @@
 				4C1F4A321C686D0F00A1512C /* Assets.xcassets */,
 				4C1F4A341C686D0F00A1512C /* LaunchScreen.storyboard */,
 				4C1F4A371C686D0F00A1512C /* Info.plist */,
+				4C1F4A681C68716B00A1512C /* ImageCaptureTask.swift */,
 			);
 			path = Sentry;
 			sourceTree = "<group>";
@@ -125,6 +168,15 @@
 			path = SentryUITests;
 			sourceTree = "<group>";
 		};
+		4C1F4A5A1C686DC800A1512C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4C1F4A601C686DC800A1512C /* ResearchKit.framework */,
+				4C1F4A621C686DC800A1512C /* ResearchKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,10 +187,12 @@
 				4C1F4A241C686D0F00A1512C /* Sources */,
 				4C1F4A251C686D0F00A1512C /* Frameworks */,
 				4C1F4A261C686D0F00A1512C /* Resources */,
+				4C1F4A671C686E0D00A1512C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4C1F4A661C686E0D00A1512C /* PBXTargetDependency */,
 			);
 			name = Sentry;
 			productName = Sentry;
@@ -215,6 +269,12 @@
 			mainGroup = 4C1F4A1F1C686D0F00A1512C;
 			productRefGroup = 4C1F4A291C686D0F00A1512C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 4C1F4A5A1C686DC800A1512C /* Products */;
+					ProjectRef = 4C1F4A591C686DC800A1512C /* ResearchKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				4C1F4A271C686D0F00A1512C /* Sentry */,
@@ -223,6 +283,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		4C1F4A601C686DC800A1512C /* ResearchKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ResearchKit.framework;
+			remoteRef = 4C1F4A5F1C686DC800A1512C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4C1F4A621C686DC800A1512C /* ResearchKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ResearchKitTests.xctest;
+			remoteRef = 4C1F4A611C686DC800A1512C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		4C1F4A261C686D0F00A1512C /* Resources */ = {
@@ -256,6 +333,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C1F4A691C68716B00A1512C /* ImageCaptureTask.swift in Sources */,
 				4C1F4A2E1C686D0F00A1512C /* ViewController.swift in Sources */,
 				4C1F4A2C1C686D0F00A1512C /* AppDelegate.swift in Sources */,
 			);
@@ -289,6 +367,11 @@
 			isa = PBXTargetDependency;
 			target = 4C1F4A271C686D0F00A1512C /* Sentry */;
 			targetProxy = 4C1F4A481C686D1000A1512C /* PBXContainerItemProxy */;
+		};
+		4C1F4A661C686E0D00A1512C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ResearchKit;
+			targetProxy = 4C1F4A651C686E0D00A1512C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -397,6 +480,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Sentry/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.lab.thrun.Sentry;
@@ -408,6 +492,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Sentry/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.lab.thrun.Sentry;
@@ -482,6 +567,7 @@
 				4C1F4A521C686D1000A1512C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4C1F4A531C686D1000A1512C /* Build configuration list for PBXNativeTarget "SentryTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +576,7 @@
 				4C1F4A551C686D1000A1512C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4C1F4A561C686D1000A1512C /* Build configuration list for PBXNativeTarget "SentryUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +585,7 @@
 				4C1F4A581C686D1000A1512C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
