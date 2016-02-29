@@ -33,6 +33,9 @@ extension ViewController : ORKTaskViewControllerDelegate {
     func taskViewController(taskViewController: ORKTaskViewController, didFinishWithReason reason: ORKTaskViewControllerFinishReason, error: NSError?) {
         //Handle results with taskViewController.result
         taskViewController.dismissViewControllerAnimated(true, completion: nil)
+        
+        // On completion, send the results to a database
+        taskViewController.result
     }
     
     
