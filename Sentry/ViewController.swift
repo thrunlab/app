@@ -35,10 +35,19 @@ extension ViewController : ORKTaskViewControllerDelegate {
         
         // On form completion, send the results to a database
         if let stepResults = taskViewController.result.results as? [ORKStepResult] {
+            // TODO: clean up; consider not hardcoding
             for stepResult in stepResults {
-                print(stepResult)
-                //print(stepResult.identifier)
-                //print(stepResult.results)
+                let stepIdentifier = stepResult.identifier
+                if stepIdentifier == "ImageCaptureStep" {
+                    print(stepIdentifier)
+                    print(stepResult.results)
+                } else if stepIdentifier == "LesionTopThreeLabelingStep" {
+                    print(stepIdentifier)
+                    print(stepResult.results)
+                } else if stepIdentifier == "BiopsyPatientInformationStep" {
+                    print(stepIdentifier)
+                    print(stepResult.results)
+                }
             }
         } else {
             // no results
