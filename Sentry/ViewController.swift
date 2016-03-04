@@ -35,7 +35,7 @@ extension ViewController : ORKTaskViewControllerDelegate {
         taskViewController.dismissViewControllerAnimated(true, completion: nil)
         
         // On completion, send the results to a database
-        taskViewController.result
+        print(taskViewController.result)
     }
     
     
