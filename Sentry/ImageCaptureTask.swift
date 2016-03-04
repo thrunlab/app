@@ -68,9 +68,10 @@ public var ImageCaptureTask : ORKOrderedTask {
     steps += [summaryStep]
     
     //Make all questions required
+    /**
     for step in steps {
         step.optional = false
-    }
+    } **/
     
     return ORKOrderedTask(identifier: "ImageCaptureTask", steps: steps)
 }

@@ -31,11 +31,20 @@ class ViewController: UIViewController {
 
 extension ViewController : ORKTaskViewControllerDelegate {
     func taskViewController(taskViewController: ORKTaskViewController, didFinishWithReason reason: ORKTaskViewControllerFinishReason, error: NSError?) {
-        //Handle results with taskViewController.result
         taskViewController.dismissViewControllerAnimated(true, completion: nil)
         
-        // On completion, send the results to a database
-        print(taskViewController.result)
+        // On form completion, send the results to a database
+        if let stepResults = taskViewController.result.results as? [ORKStepResult] {
+            for stepResult in stepResults {
+                print(stepResult)
+                //print(stepResult.identifier)
+                //print(stepResult.results)
+            }
+        } else {
+            // no results
+            print("No results!")
+        }
+        
     }
     
     
