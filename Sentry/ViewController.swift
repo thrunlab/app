@@ -54,6 +54,20 @@ extension ViewController : ORKTaskViewControllerDelegate {
             print("No results!")
         }
         
+        // send the result
+        // Add the endpoint here
+        let endPointUrl = NSURL(string: "endpoint") // TODO: change to the real url
+        let request = NSMutableURLRequest(URL: endPointUrl!)
+        request.HTTPMethod = "POST"
+        let boundary = generateBoundaryString()
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        
+        
+    }
+    
+    // Generates a boundary string for the HTTP Request
+    func generateBoundaryString() -> String {
+        return "Boundary-\(NSUUID().UUIDString)"
     }
     
     

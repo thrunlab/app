@@ -33,7 +33,6 @@ public var ImageCaptureTask : ORKOrderedTask {
     steps += [lesionLabelingStep]
     
     //TODO: change this to allow for top 3 choices
-    // TODO: make this required
     let lesionTopThreeLabelingStep = ORKFormStep(identifier: "LesionTopThreeLabelingStep", title: "Clinical Impression", text: "In order, what are your top three labels for what kind of lesion this is? You can choose from the existing labels or type your own.")
     let firstChoiceItem =  ORKFormItem(identifier: "LesionChoiceOneFormItem", text: "First choice label: ", answerFormat: ORKAnswerFormat.textAnswerFormat());
     firstChoiceItem.placeholder = "Example: Melanoma of skin"
@@ -45,8 +44,8 @@ public var ImageCaptureTask : ORKOrderedTask {
     thirdChoiceItem.placeholder = "Example: Melanoma of skin"
     lesionTopThreeLabelingStep.formItems = [
         firstChoiceItem,
-        //secondChoiceItem,
-        //thirdChoiceItem
+        secondChoiceItem,
+        thirdChoiceItem
     ]
 
     steps += [lesionTopThreeLabelingStep]
