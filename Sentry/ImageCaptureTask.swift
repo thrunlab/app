@@ -12,6 +12,12 @@ import ResearchKit
 public var ImageCaptureTask : ORKOrderedTask {
     var steps = [ORKStep]()
     
+    // Add the instruction step
+    let instructionStep = ORKInstructionStep(identifier: "InitialInstructionStep")
+    instructionStep.title = "First, you will need to take a picture of the lesion."
+    instructionStep.text = "When you hit next, please center the lesion, zooming in as much as possible while making sure that the entire area of interest is captured in the photo."
+    steps += [instructionStep]
+    
     // Add the image capture step
     let imageCaptureStep = ORKImageCaptureStep(identifier: "ImageCaptureStep")
     imageCaptureStep.title = "Take a picture of the lesion."
@@ -19,20 +25,7 @@ public var ImageCaptureTask : ORKOrderedTask {
     
     steps += [imageCaptureStep]
     
-    // Add the step for the physician to assign a label (TODO: remove this)
-    let lesionPhysicianLabelingStepTitle = "What kind of lesion do you believe that this is?"
-    let physicianLabelChoices = [
-        ORKTextChoice(text: "Melanoma", value: 0),
-        ORKTextChoice(text: "Basal Cell Carcinoma", value: 1),
-        ORKTextChoice(text: "Vascular Tumor", value: 2),
-        ORKTextChoice(text: "Benign Tumor", value: 3),
-        ORKTextChoice(text: "Other inflammatory disesase", value: 4)
-    ]
-    let physicianLabelAnswerFormat: ORKTextChoiceAnswerFormat = ORKAnswerFormat.choiceAnswerFormatWithStyle(.SingleChoice, textChoices: physicianLabelChoices)
-    let lesionLabelingStep = ORKQuestionStep(identifier: "LesionLabelingStep", title: lesionPhysicianLabelingStepTitle, answer: physicianLabelAnswerFormat)
-    steps += [lesionLabelingStep]
-    
-    //TODO: change this to allow for top 3 choices
+    //Allow physician to add a clinical impression
     let lesionTopThreeLabelingStep = ORKFormStep(identifier: "LesionTopThreeLabelingStep", title: "Clinical Impression", text: "In order, what are your top three labels for what kind of lesion this is? You can choose from the existing labels or type your own.")
     let firstChoiceItem =  ORKFormItem(identifier: "LesionChoiceOneFormItem", text: "First choice label: ", answerFormat: ORKAnswerFormat.textAnswerFormat());
     firstChoiceItem.placeholder = "Example: Melanoma of skin"
@@ -67,10 +60,10 @@ public var ImageCaptureTask : ORKOrderedTask {
     steps += [summaryStep]
     
     //Make all questions required
-    /**
+    
     for step in steps {
         step.optional = false
-    } **/
+    }
     
     return ORKOrderedTask(identifier: "ImageCaptureTask", steps: steps)
 }
