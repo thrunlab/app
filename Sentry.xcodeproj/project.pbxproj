@@ -87,6 +87,7 @@
 		4C1F4A4D1C686D1000A1512C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C1F4A591C686DC800A1512C /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = "../../../projects-workspace/ResearchKit-master/ResearchKit.xcodeproj"; sourceTree = "<group>"; };
 		4C1F4A681C68716B00A1512C /* ImageCaptureTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCaptureTask.swift; sourceTree = "<group>"; };
+		4C67BCF51C8D4D36008C0495 /* Sentry-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sentry-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +119,7 @@
 		4C1F4A1F1C686D0F00A1512C = {
 			isa = PBXGroup;
 			children = (
+				4C67BCF51C8D4D36008C0495 /* Sentry-Bridging-Header.h */,
 				4C1F4A591C686DC800A1512C /* ResearchKit.xcodeproj */,
 				4C1F4A2A1C686D0F00A1512C /* Sentry */,
 				4C1F4A3F1C686D0F00A1512C /* SentryTests */,
@@ -247,6 +249,7 @@
 				TargetAttributes = {
 					4C1F4A271C686D0F00A1512C = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = R26ZS9GC9M;
 					};
 					4C1F4A3B1C686D0F00A1512C = {
 						CreatedOnToolsVersion = 7.2;
@@ -480,6 +483,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Sentry/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -492,6 +496,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = Sentry/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

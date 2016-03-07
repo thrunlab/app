@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     @IBAction func imageCaptureTaskTapped(sender : AnyObject) {
         let taskViewController = ORKTaskViewController(task: ImageCaptureTask, taskRunUUID: nil)
         taskViewController.delegate = self
+        taskViewController.outputDirectory = NSURL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String, isDirectory: true)
         presentViewController(taskViewController, animated: true, completion: nil)
     }
 }
@@ -54,21 +55,6 @@ extension ViewController : ORKTaskViewControllerDelegate {
             print("No results!")
         }
         
-        // send the result
-        // Add the endpoint here
-        let endPointUrl = NSURL(string: "endpoint") // TODO: change to the real url
-        let request = NSMutableURLRequest(URL: endPointUrl!)
-        request.HTTPMethod = "POST"
-        let boundary = generateBoundaryString()
-        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        
-        
     }
-    
-    // Generates a boundary string for the HTTP Request
-    func generateBoundaryString() -> String {
-        return "Boundary-\(NSUUID().UUIDString)"
-    }
-    
     
 }
