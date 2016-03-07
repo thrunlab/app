@@ -49,15 +49,15 @@ extension ViewController : ORKTaskViewControllerDelegate {
                     print(stepIdentifier)
                     print(stepResult.results)
                     for lesionTopThreeResult in stepResult.results! as! [ORKTextQuestionResult] {
-                        resultsMap[lesionTopThreeResult.identifier] = lesionTopThreeResult.answer as! String
+                        resultsMap[lesionTopThreeResult.identifier] = String(lesionTopThreeResult.answer!)
                     }
                 } else if stepIdentifier == "BiopsyPatientInformationStep" {
                     print(stepIdentifier)
                     print(stepResult.results)
-                    for questionResult in stepResult.results! as! [ORKTextQuestionResult] {
-                        resultsMap[questionResult.identifier] = questionResult.answer as! String
-                    }
                     
+                    for questionResult in stepResult.results! as! [ORKQuestionResult]{
+                        resultsMap[questionResult.identifier] = String(questionResult.answer!)
+                    }
                 }
             }
             
