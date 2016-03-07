@@ -6,9 +6,4 @@
 //  Copyright © 2016 Thrun Lab. All rights reserved.
 //
 
-#ifndef Sentry_Bridging_Header_h
-#define Sentry_Bridging_Header_h
-
-
-
-#endif /* Sentry_Bridging_Header_h */
+#import <WindowsAzureMobileServices/WindowsAzureMobileServices.h>

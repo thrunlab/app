@@ -17,6 +17,7 @@
 		4C1F4A631C686E0D00A1512C /* ResearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C1F4A601C686DC800A1512C /* ResearchKit.framework */; };
 		4C1F4A641C686E0D00A1512C /* ResearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4C1F4A601C686DC800A1512C /* ResearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4C1F4A691C68716B00A1512C /* ImageCaptureTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1F4A681C68716B00A1512C /* ImageCaptureTask.swift */; };
+		4C865E551C8D618F006081D8 /* WindowsAzureMobileServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C865E541C8D618F006081D8 /* WindowsAzureMobileServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,7 +88,8 @@
 		4C1F4A4D1C686D1000A1512C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C1F4A591C686DC800A1512C /* ResearchKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ResearchKit.xcodeproj; path = "../../../projects-workspace/ResearchKit-master/ResearchKit.xcodeproj"; sourceTree = "<group>"; };
 		4C1F4A681C68716B00A1512C /* ImageCaptureTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCaptureTask.swift; sourceTree = "<group>"; };
-		4C67BCF51C8D4D36008C0495 /* Sentry-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sentry-Bridging-Header.h"; sourceTree = "<group>"; };
+		4C67BCF51C8D4D36008C0495 /* Sentry-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Sentry-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		4C865E541C8D618F006081D8 /* WindowsAzureMobileServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WindowsAzureMobileServices.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C865E551C8D618F006081D8 /* WindowsAzureMobileServices.framework in Frameworks */,
 				4C1F4A631C686E0D00A1512C /* ResearchKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -119,7 +122,6 @@
 		4C1F4A1F1C686D0F00A1512C = {
 			isa = PBXGroup;
 			children = (
-				4C67BCF51C8D4D36008C0495 /* Sentry-Bridging-Header.h */,
 				4C1F4A591C686DC800A1512C /* ResearchKit.xcodeproj */,
 				4C1F4A2A1C686D0F00A1512C /* Sentry */,
 				4C1F4A3F1C686D0F00A1512C /* SentryTests */,
@@ -141,6 +143,8 @@
 		4C1F4A2A1C686D0F00A1512C /* Sentry */ = {
 			isa = PBXGroup;
 			children = (
+				4C865E541C8D618F006081D8 /* WindowsAzureMobileServices.framework */,
+				4C67BCF51C8D4D36008C0495 /* Sentry-Bridging-Header.h */,
 				4C1F4A2B1C686D0F00A1512C /* AppDelegate.swift */,
 				4C1F4A2D1C686D0F00A1512C /* ViewController.swift */,
 				4C1F4A2F1C686D0F00A1512C /* Main.storyboard */,
@@ -485,6 +489,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Sentry",
+				);
 				INFOPLIST_FILE = Sentry/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.lab.thrun.Sentry;
@@ -499,6 +507,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Sentry",
+				);
 				INFOPLIST_FILE = Sentry/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.lab.thrun.Sentry;
