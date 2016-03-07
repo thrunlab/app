@@ -10,4 +10,5 @@
 #define Sentry_Bridging_Header_h
 
 
+
 #endif /* Sentry_Bridging_Header_h */
