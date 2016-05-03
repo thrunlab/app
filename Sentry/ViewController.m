@@ -154,7 +154,7 @@ static NSString *const kHostAddress = @"104.197.50.236:9000";
                  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Top skin result!"
                                                         message:classLabel
                                                         delegate:self
-                                                        cancelButtonTitle:@"OK!"
+                                                        cancelButtonTitle:@"Whoop de doo!"
                                                        otherButtonTitles:nil];
                  [alert show];
                  
@@ -164,6 +164,14 @@ static NSString *const kHostAddress = @"104.197.50.236:9000";
                  [activityIndicator stopAnimating];
                  NSLog(@"%@", @"Error");
                  NSLog(@"%@", error);
+                 // Show an error
+                 UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error classifying image!"
+                    message:error.localizedDescription
+                    delegate:self
+                    cancelButtonTitle:@"Aw, shucks!"
+                    otherButtonTitles:nil];
+                 [errorAlert show];
+
                  // Then, dismiss the task view controller.
                  [self dismissViewControllerAnimated:YES completion:nil];
              }
