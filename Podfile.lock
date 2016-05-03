@@ -1,0 +1,53 @@
+PODS:
+  - BoringSSL (2.0)
+  - gRPC (0.12.0):
+    - gRPC/C-Core (= 0.12.0)
+    - gRPC/GRPCClient (= 0.12.0)
+    - gRPC/ProtoRPC (= 0.12.0)
+    - gRPC/RxLibrary (= 0.12.0)
+  - gRPC/C-Core (0.12.0):
+    - BoringSSL (~> 2.0)
+  - gRPC/GRPCClient (0.12.0):
+    - gRPC/C-Core
+    - gRPC/RxLibrary
+  - gRPC/ProtoRPC (0.12.0):
+    - gRPC/GRPCClient
+    - gRPC/RxLibrary
+    - Protobuf (~> 3.0.0-alpha-4)
+  - gRPC/RxLibrary (0.12.0)
+  - Protobuf (3.0.0-alpha-4.1)
+  - ResearchKit (1.3.0)
+  - Sentry (0.0.1):
+    - Sentry/Messages (= 0.0.1)
+    - Sentry/Services (= 0.0.1)
+  - Sentry/Messages (0.0.1):
+    - Protobuf (~> 3.0.0-alpha-4)
+  - Sentry/Services (0.0.1):
+    - gRPC (~> 0.12)
+    - Sentry/Messages
+
+DEPENDENCIES:
+  - BoringSSL (from `../../../src/objective-c`)
+  - gRPC (from `../../..`)
+  - Protobuf (from `../../../third_party/protobuf`)
+  - ResearchKit (~> 1.0)
+  - Sentry (from `.`)
+
+EXTERNAL SOURCES:
+  BoringSSL:
+    :podspec: "../../../src/objective-c"
+  gRPC:
+    :path: "../../.."
+  Protobuf:
+    :path: "../../../third_party/protobuf"
+  Sentry:
+    :path: "."
+
+SPEC CHECKSUMS:
+  BoringSSL: 961e639a605d2b5b08cc3371e526cee7c12f0294
+  gRPC: 67247e1b35d288464bcbc39ae865d712367c8395
+  Protobuf: 69f9654046c9a7787c5e07d4e5bc7c567a88ff12
+  ResearchKit: 934a1efefed1a3a9150002a1e4b123d0c86c3f2e
+  Sentry: 2b36310a6f9dbb5911951b12c833dd10a209ce4d
+
+COCOAPODS: 0.39.0

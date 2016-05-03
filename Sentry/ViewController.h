@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <ResearchKit/ResearchKit.h>
 
 @interface ViewController : UIViewController
 

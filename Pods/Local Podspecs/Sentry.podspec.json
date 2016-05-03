@@ -1,0 +1,43 @@
+{
+  "name": "Sentry",
+  "version": "0.0.1",
+  "license": "New BSD",
+  "platforms": {
+    "ios": "9.3",
+    "osx": "10.9"
+  },
+  "prepare_command": "mkdir -p Pods/Sentry\nprotoc -I ../../protos --objc_out=Pods/Sentry --objcgrpc_out=Pods/Sentry ../../protos/inception_inference.proto",
+  "subspecs": [
+    {
+      "name": "Messages",
+      "source_files": [
+        "Pods/Sentry/*.pbobjc.{h,m}",
+        "Pods/Sentry/**/*.pbobjc.{h,m}"
+      ],
+      "header_mappings_dir": "Pods/Sentry",
+      "requires_arc": false,
+      "dependencies": {
+        "Protobuf": [
+          "~> 3.0.0-alpha-4"
+        ]
+      }
+    },
+    {
+      "name": "Services",
+      "source_files": [
+        "Pods/Sentry/*.pbrpc.{h,m}",
+        "Pods/Sentry/**/*.pbrpc.{h,m}"
+      ],
+      "header_mappings_dir": "Pods/Sentry",
+      "requires_arc": true,
+      "dependencies": {
+        "gRPC": [
+          "~> 0.12"
+        ],
+        "Sentry/Messages": [
+
+        ]
+      }
+    }
+  ]
+}
