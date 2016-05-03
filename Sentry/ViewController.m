@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import <Sentry/InceptionInference.pbrpc.h>
 #import <GRPCClient/GRPCCall+Tests.h>
+#import <AVFoundation/AVFoundation.h>
 
 // Define the service host address
 static NSString *const kHostAddress = @"104.197.50.236:9000";
@@ -30,6 +31,7 @@ static NSString *const kHostAddress = @"104.197.50.236:9000";
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [self turnTorchOn:true];
     // Create a step
     ORKInstructionStep *instructionStep =
     [[ORKInstructionStep alloc] initWithIdentifier:@"intro"];
@@ -41,7 +43,7 @@ static NSString *const kHostAddress = @"104.197.50.236:9000";
     format.maximum = @(90);
     ORKQuestionStep *questionStep =
     [ORKQuestionStep questionStepWithIdentifier:@"questionStepIdentifier"
-                                          title:@"How old are you?"
+                                          title:@"How is your community do?"
                                          answer:format];
     ORKImageCaptureStep *skinLesionCaptureStep =
     [[ORKImageCaptureStep alloc] initWithIdentifier:@"imageCaptureStep"];
@@ -85,17 +87,28 @@ static NSString *const kHostAddress = @"104.197.50.236:9000";
     }
     NSArray *labelArray = @[@"Dermal benign", @"Dermal malignant", @"Epidermal benign", @"Epidermal malignant", @"Genodermatosis", @"Inflammatory", @"Lymphoma", @"Not skin", @"Pigmented benign", @"Pigmented malignant"];
     
+    
     if (imageData != nil) {
+        NSLog(@"%@", @"Calling the inception service...");
+        // Show an activity spinner
+        UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [self.view addSubview:activityIndicator];
+        [self.view bringSubviewToFront:activityIndicator];
+        [activityIndicator startAnimating];
+
+        
         [GRPCCall useInsecureConnectionsForHost:kHostAddress];
         
         InceptionService *inceptionService = [[InceptionService alloc] initWithHost:kHostAddress];
         
         InceptionRequest *inceptionRequest = [InceptionRequest message];
         inceptionRequest.jpegEncoded = imageData;
+        
         [inceptionService classifyWithRequest:inceptionRequest handler:
          ^(InceptionResponse *response, NSError *error) {
              
              if (response) {
+                 [activityIndicator stopAnimating];
                  NSLog(@"%@", @"Response");
                  NSLog(@"%@", response);
                  NSString* classLabel = labelArray[[response.classesArray valueAtIndex:0]];
@@ -109,7 +122,8 @@ static NSString *const kHostAddress = @"104.197.50.236:9000";
                  
                  // Then, dismiss the task view controller.
                  [self dismissViewControllerAnimated:YES completion:nil];
-             } else {t
+             } else {
+                 [activityIndicator stopAnimating];
                  NSLog(@"%@", @"Error");
                  NSLog(@"%@", error);
                  // Then, dismiss the task view controller.
@@ -121,6 +135,25 @@ static NSString *const kHostAddress = @"104.197.50.236:9000";
     
 }
 
+// Turns on the flashlight
+- (void) turnTorchOn: (bool) on {
+    
+    // check if flashlight available
+    NSLog(@"%@", @"turning torch on");
+    Class captureDeviceClass = NSClassFromString(@"AVCaptureDevice");
+    if (captureDeviceClass != nil) {
+        AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+        if ([device hasTorch] && [device hasFlash]){
+            NSLog(@"%@", @"Flash available");
+            [device lockForConfiguration:nil];
+            if (on) {
+                [device setTorchMode:AVCaptureTorchModeOn];
+            } else {
+                [device setTorchMode:AVCaptureTorchModeOff];
+            }
+            [device unlockForConfiguration];
+        }
+    } }
 
 
 @end
