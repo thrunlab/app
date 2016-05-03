@@ -36,22 +36,59 @@ static NSString *const kHostAddress = @"104.197.50.236:9000";
     ORKInstructionStep *instructionStep =
     [[ORKInstructionStep alloc] initWithIdentifier:@"intro"];
     instructionStep.title = @"Welcome to the Sentry ResearchKit classifier app.";
+    instructionStep.detailText = @"To record a lesion, please have the patient identifier number ready.";
     
-    ORKNumericAnswerFormat *format =
-    [ORKNumericAnswerFormat integerAnswerFormatWithUnit:@"years"];
-    format.minimum = @(18);
-    format.maximum = @(90);
-    ORKQuestionStep *questionStep =
-    [ORKQuestionStep questionStepWithIdentifier:@"questionStepIdentifier"
-                                          title:@"How is your community do?"
-                                         answer:format];
+    // Gather patient identifier number
+    ORKNumericAnswerFormat *identifierFormat =
+    [ORKNumericAnswerFormat integerAnswerFormatWithUnit:@""];
+    identifierFormat.minimum = @(0);
+    identifierFormat.maximum = @(100);
+    ORKQuestionStep *patientIdentifierStep = [ORKQuestionStep questionStepWithIdentifier:@"patientIdentifierStep"
+                                                                                   title:@"Enter the patient identifier number:"
+                                                                                  answer:identifierFormat];
+    patientIdentifierStep.text = @"This should be an ID between 0 and 100";
+    
+    // Capture the clinical impression
+    ORKFormStep *clinicalImpressionForm = [[ORKFormStep alloc] initWithIdentifier:@"clinicalImpressionFormstep"
+                                                                            title:@"Lesion Clinical Impression" text:@"Record your impression of this lesion. Keep answers concise."];
+    NSMutableArray *clinicalImpressionFormItems = [NSMutableArray new];
+    [clinicalImpressionFormItems addObject:[[ORKFormItem alloc] initWithSectionTitle:@"Top 3 Potential Diagnoses"]];
+    ORKTextAnswerFormat *impressionAnswerFormat = [ORKTextAnswerFormat textAnswerFormatWithMaximumLength:@(150)];
+    
+    // Top 3 clinical impressions
+    ORKFormItem *firstImpression = [[ORKFormItem alloc] initWithIdentifier:@"firstImpression" text:@"First impression?" answerFormat:impressionAnswerFormat];
+    firstImpression.placeholder = @"Example: Melanoma";
+    
+    ORKFormItem *secondImpression = [[ORKFormItem alloc] initWithIdentifier:@"secondImpression" text:@"Second impression?" answerFormat:impressionAnswerFormat];
+    secondImpression.placeholder = @"Example: Dermal benign lesion";
+    
+    ORKFormItem *thirdImpression = [[ORKFormItem alloc] initWithIdentifier:@"thirdImpression" text:@"Third impression?" answerFormat:impressionAnswerFormat];
+    thirdImpression.placeholder = @"Example: Dermal benign lesion";
+    
+    [clinicalImpressionFormItems addObjectsFromArray:@[firstImpression, secondImpression, thirdImpression]];
+    
+    clinicalImpressionForm.formItems = clinicalImpressionFormItems;
+    
+    // Patient skin Fitzpatrick type
+    NSArray<NSString *> *fitzpatrickLabels = @[@"Type I", @"Type II", @"Type III", @"Type IV", @"Type V", @"Type VI"];
+    NSMutableArray *fitzpatrickTextChoices = [NSMutableArray new];
+    for (int i=0; i < [fitzpatrickLabels count]; i++) {
+        [fitzpatrickTextChoices addObject:[[ORKTextChoice alloc] initWithText:fitzpatrickLabels[i] detailText:nil value:@(i) exclusive:YES]];
+    }
+    ORKValuePickerAnswerFormat *fitzpatrickFormat = [[ORKValuePickerAnswerFormat alloc] initWithTextChoices:fitzpatrickTextChoices];
+    ORKQuestionStep *fitzpatrickStep = [ORKQuestionStep questionStepWithIdentifier:@"fitzpatrickStep"
+                                                                                   title:@"What is the patient's Fitzpatrick skin type?"
+                                                                                  answer:fitzpatrickFormat];
+    
+    // Lesion capture step
     ORKImageCaptureStep *skinLesionCaptureStep =
     [[ORKImageCaptureStep alloc] initWithIdentifier:@"imageCaptureStep"];
     skinLesionCaptureStep.title = @"Take a photo of the lesion";
     
     
+    // Add all steps to task
     ORKOrderedTask *task =
-    [[ORKOrderedTask alloc] initWithIdentifier:@"task" steps:@[instructionStep,questionStep,skinLesionCaptureStep]];
+    [[ORKOrderedTask alloc] initWithIdentifier:@"task" steps:@[instructionStep,patientIdentifierStep, clinicalImpressionForm, fitzpatrickStep, skinLesionCaptureStep]];
     
     ORKTaskViewController *taskViewController =
     [[ORKTaskViewController alloc] initWithTask:task taskRunUUID:nil];
@@ -94,6 +131,7 @@ static NSString *const kHostAddress = @"104.197.50.236:9000";
         UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         [self.view addSubview:activityIndicator];
         [self.view bringSubviewToFront:activityIndicator];
+        activityIndicator.hidden = NO;
         [activityIndicator startAnimating];
 
         
