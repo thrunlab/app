@@ -1,17 +1,20 @@
 {
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "BA1EE7849B52C0F524C5CC2859745E6577129E68",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
     "DBA6F8B12B84878540F44342C4772AC004D85ABD" : 0,
-    "8B06E12A8BC7ADE97BC9AAF1FFA2035EEC0C9610" : 0,
-    "B76A9786E45DA7F517EDF258727A83D05C5182FC" : 0
+    "B76A9786E45DA7F517EDF258727A83D05C5182FC" : 0,
+    "BA1EE7849B52C0F524C5CC2859745E6577129E68" : 0,
+    "8B06E12A8BC7ADE97BC9AAF1FFA2035EEC0C9610" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "531103C1-9BD5-4A66-AC4D-84CBA5D667D8",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "DBA6F8B12B84878540F44342C4772AC004D85ABD" : "..\/..\/third_party\/protobuf",
-    "8B06E12A8BC7ADE97BC9AAF1FFA2035EEC0C9610" : "..\/..",
-    "B76A9786E45DA7F517EDF258727A83D05C5182FC" : "..\/..\/third_party\/nanopb"
+    "B76A9786E45DA7F517EDF258727A83D05C5182FC" : "..\/..\/third_party\/nanopb",
+    "BA1EE7849B52C0F524C5CC2859745E6577129E68" : "Sentry\/",
+    "8B06E12A8BC7ADE97BC9AAF1FFA2035EEC0C9610" : "..\/.."
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "Sentry",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -26,6 +29,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/nanopb\/nanopb.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B76A9786E45DA7F517EDF258727A83D05C5182FC"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/sentryAI\/app.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BA1EE7849B52C0F524C5CC2859745E6577129E68"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/google\/protobuf.git",

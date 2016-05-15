@@ -12,8 +12,8 @@
 #import <AVFoundation/AVFoundation.h>
 
 // Define the service host address
-static NSString *const kHostAddress = @"104.197.50.236:9000";
-
+//static NSString *const kHostAddress = @"104.197.50.236:9000";
+static NSString *const kHostAddress = @"mjolnir-collect.stanford.edu:8000";
 @interface ViewController ()
 
 @end
@@ -127,13 +127,7 @@ static NSString *const kHostAddress = @"104.197.50.236:9000";
     
     if (imageData != nil) {
         NSLog(@"%@", @"Calling the inception service...");
-        // Show an activity spinner
-        UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        [self.view addSubview:activityIndicator];
-        [self.view bringSubviewToFront:activityIndicator];
-        activityIndicator.hidden = NO;
-        [activityIndicator startAnimating];
-
+    
         
         [GRPCCall useInsecureConnectionsForHost:kHostAddress];
         
@@ -146,7 +140,6 @@ static NSString *const kHostAddress = @"104.197.50.236:9000";
          ^(InceptionResponse *response, NSError *error) {
              
              if (response) {
-                 [activityIndicator stopAnimating];
                  NSLog(@"%@", @"Response");
                  NSLog(@"%@", response);
                  NSString* classLabel = labelArray[[response.classesArray valueAtIndex:0]];
@@ -161,7 +154,6 @@ static NSString *const kHostAddress = @"104.197.50.236:9000";
                  // Then, dismiss the task view controller.
                  [self dismissViewControllerAnimated:YES completion:nil];
              } else {
-                 [activityIndicator stopAnimating];
                  NSLog(@"%@", @"Error");
                  NSLog(@"%@", error);
                  // Show an error
