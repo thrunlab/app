@@ -42,15 +42,14 @@ static NSString *const kHostAddress = @"mjolnir-collect.stanford.edu:8000";
     ORKNumericAnswerFormat *identifierFormat =
     [ORKNumericAnswerFormat integerAnswerFormatWithUnit:@""];
     identifierFormat.minimum = @(0);
-    identifierFormat.maximum = @(100);
+    identifierFormat.maximum = @(99999999);
     ORKQuestionStep *patientIdentifierStep = [ORKQuestionStep questionStepWithIdentifier:@"patientIdentifierStep"
-                                                                                   title:@"Enter the patient identifier number:"
+                                                                                   title:@"Enter the patient MRN:"
                                                                                   answer:identifierFormat];
-    patientIdentifierStep.text = @"This should be an ID between 0 and 100";
     
     // Capture the clinical impression
     ORKFormStep *clinicalImpressionForm = [[ORKFormStep alloc] initWithIdentifier:@"clinicalImpressionFormstep"
-                                                                            title:@"Lesion Clinical Impression" text:@"Record your impression of this lesion. Keep answers concise."];
+                                                                            title:@"Lesion Clinical Impression" text:@"Record your primary impression of this lesion. Keep answers concise."];
     NSMutableArray *clinicalImpressionFormItems = [NSMutableArray new];
     [clinicalImpressionFormItems addObject:[[ORKFormItem alloc] initWithSectionTitle:@"Top 3 Potential Diagnoses"]];
     ORKTextAnswerFormat *impressionAnswerFormat = [ORKTextAnswerFormat textAnswerFormatWithMaximumLength:@(150)];
@@ -68,6 +67,7 @@ static NSString *const kHostAddress = @"mjolnir-collect.stanford.edu:8000";
     [clinicalImpressionFormItems addObjectsFromArray:@[firstImpression, secondImpression, thirdImpression]];
     
     clinicalImpressionForm.formItems = clinicalImpressionFormItems;
+    clinicalImpressionForm.optional = false;
     
     // Patient skin Fitzpatrick type
     NSArray<NSString *> *fitzpatrickLabels = @[@"Type I", @"Type II", @"Type III", @"Type IV", @"Type V", @"Type VI"];
@@ -80,15 +80,20 @@ static NSString *const kHostAddress = @"mjolnir-collect.stanford.edu:8000";
                                                                                    title:@"What is the patient's Fitzpatrick skin type?"
                                                                                   answer:fitzpatrickFormat];
     
+    // Lesion capture instruction step
+    ORKInstructionStep *skinLesionInstructionStep = [[ORKInstructionStep alloc] initWithIdentifier:@"skinLesionInstructionStep"];
+    skinLesionInstructionStep.title = @"Next, you will need to take a photo of the lesion";
+    skinLesionInstructionStep.text = @"Zoom in on the lesion as much as possible, and ensure that the photo is in focus. Avoid capturing identifying marks, like tattoos and faces, where possible.";
+ 
     // Lesion capture step
     ORKImageCaptureStep *skinLesionCaptureStep =
     [[ORKImageCaptureStep alloc] initWithIdentifier:@"imageCaptureStep"];
-    skinLesionCaptureStep.title = @"Take a photo of the lesion";
+    skinLesionCaptureStep.optional = false;
     
     
     // Add all steps to task
     ORKOrderedTask *task =
-    [[ORKOrderedTask alloc] initWithIdentifier:@"task" steps:@[instructionStep,patientIdentifierStep, clinicalImpressionForm, fitzpatrickStep, skinLesionCaptureStep]];
+    [[ORKOrderedTask alloc] initWithIdentifier:@"task" steps:@[instructionStep,patientIdentifierStep, clinicalImpressionForm, fitzpatrickStep, skinLesionInstructionStep, skinLesionCaptureStep]];
     
     ORKTaskViewController *taskViewController =
     [[ORKTaskViewController alloc] initWithTask:task taskRunUUID:nil];
